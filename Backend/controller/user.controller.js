@@ -24,7 +24,11 @@ export const signup = async(req, res) => {
    .save();
   if(newUser){
     createTokenAndSaveCookie(newUser._id, res);
-     res.status(201).json({ message: "User created successfully",newUser })
+     res.status(201).json({ message: "User created successfully",user: {
+      _id: newUser._id,
+      name: newUser.name,
+      email: newUser.email
+    } })
 
   }
 }
@@ -81,4 +85,4 @@ export const logout =async (req, res) => {
     console.error("Error in logout:", error);
     res.status(500).json({ message: "Internal server error" });
   } 
-};
+}; 
