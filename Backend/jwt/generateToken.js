@@ -1,16 +1,13 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 const createTokenAndSaveCookie = (userId, res) => {
-
-  const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, {
-    expiresIn: '5d' // Token expiration time
+  const token = jwt.sign({ userId }, process.env.JWT_TOKEN, {
+    expiresIn: "10d",
   });
-  res.cookie('jwt', token, {
-    httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
-    secure: true, // Use secure cookies in production
-    sameSite: 'Strict', // Helps prevent CSRF attacks
+  res.cookie("jwt", token, {
+    httpOnly: true, // xss
+    secure: true,
+    sameSite: "strict", // csrf
   });
-}
-
-
+};
 export default createTokenAndSaveCookie;
