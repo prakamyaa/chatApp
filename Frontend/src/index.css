@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  
-}
-
-.flex-prakamya::-webkit-scrollbar {
+.flex-1::-webkit-scrollbar {
   display: none;
 }
